@@ -6,6 +6,7 @@ import Home from './components/Home'
 import Login from './components/Login'
 import Profile from './components/Profile'
 import Signup from './components/Signup'
+import CreatePost from './components/CreatePost'
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
     <Route exact path='/login' component={Login}/>
     <Route exact path='/signup' component={Signup}/>
     <Route exact path='/profile' component={Profile}/>
+    <Route exact path='/create' component={CreatePost}/>
     </BrowserRouter>
   );
 }
