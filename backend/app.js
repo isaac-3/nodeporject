@@ -30,5 +30,5 @@ app.use(require('./routes/auth'))
 app.use(require('./routes/post'))
 
 
-app.listen(3000)
-console.log('running on port 3000')
+app.listen(3001)
+console.log('running on port 3001')
