@@ -16,6 +16,11 @@ const Profile = () => {
             setPosts(res.mypost)
         })
     },[]) 
+
+    // console.log(state)
+    if(state == null){
+        return <h1>hii</h1>
+    }
     
     return (
         <div style={{maxWidth: "550px", margin: '0px auto'}}>
@@ -28,9 +33,9 @@ const Profile = () => {
                 <div>
                     <h4>{state ? state.name : ". . ."}</h4>
                     <div style={{display: "flex", justifyContent: "space-between", width:"108%"}}>
-                        <h6>40 post</h6>
-                        <h6>40 followers</h6>
-                        <h6>40 following</h6>
+                        <h6>{posts.length} post</h6>
+                        <h6>{state.followers.length} followers</h6>
+                        <h6>{state.following.length} following</h6>
                     </div>
                 </div>
             </div>
