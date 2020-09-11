@@ -8,6 +8,7 @@ import Profile from './components/Profile'
 import Signup from './components/Signup'
 import CreatePost from './components/CreatePost'
 import UserProfile from './components/UserProfile'
+import SubUserPosts from './components/SubUserPosts'
 import {reducer, initialState} from './reducers/userReducer'
 
 export const UserContext = createContext()
@@ -33,6 +34,7 @@ const Routing = () => {
       <Route exact path='/profile' component={Profile}/>
       <Route exact path='/create' component={CreatePost}/>
       <Route exact path='/profile/:userId' component={UserProfile}/>
+      <Route exact path='/feed' component={SubUserPosts}/>
     </Switch>
   )
 }

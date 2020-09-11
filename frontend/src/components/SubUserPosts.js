@@ -1,15 +1,16 @@
+
 import React,{useState, useEffect, useContext} from 'react';
 import {UserContext} from '../App'
 import {Link} from 'react-router-dom'
 
-const Home = () => {
+const SubUserPosts = () => {
 
     const [data, setData] = useState([])
     // const [icomment, setiComment] = useState('')
     const {state, dispatch} = useContext(UserContext)
 
     useEffect(() => {
-        fetch("http://localhost:3001/allpost", {
+        fetch("http://localhost:3001/subpost", {
             headers: {"Authorization": "Bearer "+localStorage.getItem("jwt")}
         })
         .then(res => res.json())
@@ -177,4 +178,4 @@ const Home = () => {
     );
 }
  
-export default Home;
+export default SubUserPosts;
