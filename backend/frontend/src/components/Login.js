@@ -30,7 +30,7 @@ const Login = () => {
                 localStorage.setItem("jwt", data.token)
                 localStorage.setItem("user", JSON.stringify(data.user))
                 dispatch({type: "USER", payload: data.user})
-                M.toast({html: "signedin successfully", classes: "#43a047 green darken-1"})
+                M.toast({html: "you signedin successfully", classes: "#43a047 green darken-1"})
                 history.push('/')
             }
         }).catch(err => {
@@ -56,7 +56,7 @@ const Login = () => {
                 <button className="btn waves-effect waves-light #64b5f6 blue darken-1"
                     onClick={()=>postdata()}
                 >Login</button>
-                <h5><Link to='/signup'>Dont have an account ?</Link></h5>
+                <h5><Link to='/signup'>Dont have an account ? Sign Up!</Link></h5>
             </div>
         </div>
     );
