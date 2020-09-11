@@ -87,7 +87,6 @@ const Home = () => {
         })
         .then(res => res.json())
         .then(res=>{
-            // console.log(res)
             const newData = data.filter(item => {
                 return item._id !== res._id
             })
@@ -121,16 +120,21 @@ const Home = () => {
                 data.map(item => {
                     return(
                         <div className="card home-card" key={item._id}>
-                            <h5>
-                                <Link to={item.postedBy._id !== state._id ? '/profile/'+item.postedBy._id : '/profile'}>
-                                {item.postedBy.name}
-                                </Link>
-                            {item.postedBy._id === state._id &&
-                                <i className="material-icons" style={{float: 'right'}}
-                                    onClick={() => deletePost(item._id)}
-                                >delete</i>
-                            }
-                            </h5>
+                            <div>
+                                <img style={{width: "30px", height: "30px", borderRadius: "50%", float: 'left',margin: "8px"}}
+                                    src={item.postedBy.pic}
+                                />
+                                <h5 style={{padding: "8px"}}>
+                                    <Link to={item.postedBy._id !== state._id ? '/profile/'+item.postedBy._id : '/profile'}>
+                                    {item.postedBy.name}
+                                    </Link>
+                                    {item.postedBy._id === state._id &&
+                                        <i className="material-icons" style={{float: 'right'}}
+                                            onClick={() => deletePost(item._id)}
+                                        >delete</i>
+                                    }
+                                </h5>
+                            </div>
                             <div className="card-image">
                                 <img src={item.photo}/>
                             </div>
@@ -150,13 +154,19 @@ const Home = () => {
                                 {
                                     item.comments.map(comment => {
                                         return(
-                                        <h6 key={comment._id}><span style={{fontWeight: '500'}}>{comment.postedBy.name}</span>  {comment.text}
-                                            {comment.postedBy._id === state._id &&
-                                                <i className="material-icons" style={{float: 'right'}}
-                                                    onClick={() => deleteComment( item._id, comment._id)}
-                                                >delete</i>
-                                            }
-                                        </h6>
+                                        <div>
+                                            <img style={{width: "20px", height: "20px", borderRadius: "50%", float: 'left', marginRight: '4px'}}
+                                                src={comment.postedBy.pic}
+                                            />
+                                            <h6 key={comment._id}><span style={{fontWeight: '500'}}>
+                                                {comment.postedBy.name}</span>  {comment.text}
+                                                {comment.postedBy._id === state._id &&
+                                                    <i className="material-icons" style={{float: 'right'}}
+                                                        onClick={() => deleteComment( item._id, comment._id)}
+                                                    >delete</i>
+                                                }
+                                            </h6>
+                                        </div>
                                         )
                                     })
                                 }
