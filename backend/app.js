@@ -1,10 +1,11 @@
 const express = require('express')
 const { response } = require('express')
+const PORT = process.env.PORT || 3001
 const cors = require('cors')
 const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
 mongoose.set('useFindAndModify', false); // for findoneandupdate
-const {MONGOURI} = require('./keys')
+const {MONGOURI} = require('./config/keys')
 const app = express()
 
 mongoose.connect(MONGOURI, {
@@ -31,6 +32,14 @@ app.use(require('./routes/post'))
 app.use(require('./routes/auth'))
 app.use(require('./routes/user'))
 
+if(process.env.NODE_ENV == "production"){
+    app.use(express.static('frontend/build'))
+    const path = require('path')
+    app.get("*", (req, res) => {
+        res.sendFile(path.resolve(__dirname, 'fontend', 'build', 'index.html'))
+    })
+}
 
-app.listen(3001)
-console.log('running on port 3001')
+app.listen(PORT,()=>{
+    console.log("app running on", PORT)
+})
