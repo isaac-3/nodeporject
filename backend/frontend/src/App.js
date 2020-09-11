@@ -26,6 +26,7 @@ const Routing = () => {
       history.push('/login')
     }
   },[])
+  
   return(
     <Switch>
       <Route exact path='/' component={Home}/>
