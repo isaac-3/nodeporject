@@ -1,7 +1,7 @@
 const express = require('express')
 const { response } = require('express')
 const PORT = process.env.PORT || 3001
-// const cors = require('cors')
+const cors = require('cors')
 // const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
 mongoose.set('useFindAndModify', false); // for findoneandupdate
@@ -22,7 +22,7 @@ mongoose.connection.on('error',(err)=>{
 
 
 app.use(express.json())
-// app.use(cors()) 
+app.use(cors()) 
 // app.use(bodyParser())
 
 

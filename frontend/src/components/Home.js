@@ -125,7 +125,7 @@ const Home = () => {
                                     src={item.postedBy.pic}
                                 />
                                 <h5 style={{padding: "8px"}}>
-                                    <Link to={item.postedBy._id !== state._id ? '/profile/'+item.postedBy._id : '/profile'}>
+                                    <Link to={item.postedBy._id !== state._id ? '/profile/'+item.postedBy._id : '/profile'} className="post_name">
                                     {item.postedBy.name}
                                     </Link>
                                     {item.postedBy._id === state._id &&
@@ -148,18 +148,18 @@ const Home = () => {
                                         onClick={() => likePost(item._id)}
                                     >favorite</i>
                                 }
-                                <h6>{item.likes.length} likes</h6>
-                                <h6>{item.title}</h6>
-                                <p>{item.body}</p>
+                                <h6 style={{float: "right"}}>{item.likes.length} likes</h6>
+                                <h6 className="post_name">{item.title}</h6>
+                                {/* <p>{item.body}</p> */}
                                 {
                                     item.comments.map(comment => {
                                         return(
-                                        <div>
+                                        <div className="comments_sec">
                                             <img style={{width: "20px", height: "20px", borderRadius: "50%", float: 'left', marginRight: '4px'}}
                                                 src={comment.postedBy.pic}
                                             />
-                                            <h6 key={comment._id}><span style={{fontWeight: '500'}}>
-                                                {comment.postedBy.name}</span>  {comment.text}
+                                            <h6 key={comment._id}><span style={{fontWeight: 'bolder', color: "brown"}}>
+                                                {comment.postedBy.name}</span> <span style={{fontWeight: 'bolder'}}>{comment.text}</span>
                                                 {comment.postedBy._id === state._id &&
                                                     <i className="material-icons" style={{float: 'right'}}
                                                         onClick={() => deleteComment( item._id, comment._id)}
